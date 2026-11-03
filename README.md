@@ -33,3 +33,10 @@ npm run start
 - Set the final domain in metadata and deployment configuration after the domain is chosen.
 
 This folder is a local review copy. It has not been pushed to GitHub or deployed to Vercel.
+## Live Website
+
+https://chamidu-portfolio.vercel.app
+
+## Deployment
+
+Hosted on Vercel.
