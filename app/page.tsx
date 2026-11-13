@@ -9,14 +9,34 @@ type Project = {
   category: string;
   description: string;
   technologies: string[];
-  visual: 'smart' | 'memo' | 'docker' | 'web' | 'solar';
-  href?: string;
-  linkLabel?: string;
+  visual: 'smart' | 'memo' | 'docker' | 'web' | 'solar' | 'message';
+href?: string;
+liveHref?: string;
+linkLabel?: string;
 };
 
 const projects: Project[] = [
-  {
+    {
     number: '01',
+    name: 'Private Message System',
+    category: 'Full-stack Web Application',
+    description:
+      'A secure, role-based messaging platform where visitors can submit private messages. Main Admins can access message contents, while regular admins receive individual notifications without viewing private messages.',
+    technologies: [
+      'Next.js',
+      'TypeScript',
+      'Tailwind CSS',
+      'MongoDB Atlas',
+      'Mongoose',
+      'bcrypt',
+    ],
+    visual: 'message',
+    href: 'https://github.com/HMGChamidu/private-message-system',
+    liveHref: 'https://private-message-system-10847owgt-chamindusandeepa339-3399.vercel.app',
+    linkLabel: 'GitHub Repository',
+  },
+  {
+    number: '02',
     name: 'SmartPresence',
     category: 'Attendance verification · Capstone',
     description:
@@ -25,7 +45,7 @@ const projects: Project[] = [
     visual: 'smart',
   },
   {
-    number: '02',
+    number: '03',
     name: 'MemoMap',
     category: 'iOS application',
     description:
@@ -34,7 +54,7 @@ const projects: Project[] = [
     visual: 'memo',
   },
   {
-    number: '03',
+    number: '04',
     name: 'Containerized Web App',
     category: 'DevOps practice project',
     description:
@@ -45,7 +65,7 @@ const projects: Project[] = [
     linkLabel: 'View repository',
   },
   {
-    number: '04',
+    number: '05',
     name: 'Wolf CS Sri Lanka',
     category: 'Responsive website',
     description:
@@ -56,7 +76,7 @@ const projects: Project[] = [
     linkLabel: 'View repository',
   },
   {
-    number: '05',
+    number: '06',
     name: 'Solar Generation API',
     category: 'REST API · Coursework',
     description:
@@ -127,6 +147,37 @@ function ProjectVisual({ type }: { type: Project['visual'] }) {
       </div>
     );
   }
+    if (type === 'message') {
+    return (
+      <div className="visual visual-message" aria-label="Private Message System illustration">
+        <div className="message-topbar">
+          <span>PRIVATE MESSAGE SYSTEM</span>
+          <span className="message-secure">● SECURE</span>
+        </div>
+
+        <div className="message-interface">
+          <div className="message-sidebar">
+            <span />
+            <span />
+            <span />
+          </div>
+
+          <div className="message-content">
+            <div className="message-heading">INBOX <span>03</span></div>
+            <div className="message-item"><i /> <span /><b /></div>
+            <div className="message-item"><i /> <span /><b /></div>
+            <div className="message-item"><i /> <span /><b /></div>
+            <div className="message-lock">🔒 PRIVATE & PROTECTED</div>
+          </div>
+        </div>
+
+        <div className="message-footer">
+          <span>ROLE-BASED ACCESS</span>
+          <span>ADMIN PORTAL / ACTIVE</span>
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="visual visual-solar" aria-label="Abstract solar generation API illustration">
       <div className="solar-sun" /><div className="solar-horizon" />
@@ -162,12 +213,24 @@ function ProjectCard({ project, featured = false }: { project: Project; featured
       onPointerMove={handleProjectPointerMove}
       onPointerLeave={resetProjectPointer}
     >
-      <div className="project-visual-wrap"><ProjectVisual type={project.visual} /><span className="project-number">{project.number} / 05</span></div>
+      <div className="project-visual-wrap"><ProjectVisual type={project.visual} /><span className="project-number">{project.number} / 06</span></div>
       <div className="project-info">
         <div className="project-heading"><div><p className="eyebrow">{project.category}</p><h3>{project.name}</h3></div>{project.href ? <a className="round-link" href={project.href} target="_blank" rel="noreferrer" aria-label={`${project.linkLabel} for ${project.name}`}><ArrowUpRight /></a> : <span className="round-link round-link-muted" aria-hidden="true">↗</span>}</div>
         <p className="project-description">{project.description}</p>
         <div className="tag-list">{project.technologies.map((tech) => <span className="tag" key={tech}>{tech}</span>)}</div>
-        {project.href && <a className="text-link" href={project.href} target="_blank" rel="noreferrer">{project.linkLabel} <ArrowUpRight /></a>}
+       <div className="project-links">
+  {project.href && (
+    <a className="text-link" href={project.href} target="_blank" rel="noreferrer">
+      GitHub Repository <ArrowUpRight />
+    </a>
+  )}
+
+  {project.liveHref && (
+    <a className="text-link" href={project.liveHref} target="_blank" rel="noreferrer">
+      Live Demo <ArrowUpRight />
+    </a>
+  )}
+</div>
       </div>
     </article>
   );
