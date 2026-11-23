@@ -2,7 +2,33 @@
 
 import Image from 'next/image';
 import { useEffect, useState, type PointerEvent as ReactPointerEvent } from 'react';
+import type { IconType } from 'react-icons';
 
+import {
+  
+  SiJavascript,
+  SiTypescript,
+  SiSpringboot,
+  SiNodedotjs,
+  SiExpress,
+  SiReact,
+  SiDocker,
+  SiTerraform,
+  SiLinux,
+  SiGit,
+  SiGithub,
+  SiPostgresql,
+  SiMysql,
+  SiMongodb,
+} from 'react-icons/si';
+import { FaJava, FaAws } from 'react-icons/fa6';
+
+import {
+  FiSmartphone,
+  FiServer,
+  FiShield,
+  FiKey,
+} from 'react-icons/fi';
 type Project = {
   number: string;
   name: string;
@@ -86,18 +112,50 @@ const projects: Project[] = [
   },
 ];
 
-const skillGroups = [
+type SkillItem = {
+  name: string;
+  icon: IconType;
+};
+
+const skillGroups: {
+  title: string;
+  items: SkillItem[];
+}[] = [
   {
     title: 'Full-stack development',
-    items: ['Java', 'JavaScript', 'TypeScript', 'Spring Boot', 'Node.js', 'Express', 'React', 'React Native'],
+    items: [
+      { name: 'Java', icon: FaJava },
+      { name: 'JavaScript', icon: SiJavascript },
+      { name: 'TypeScript', icon: SiTypescript },
+      { name: 'Spring Boot', icon: SiSpringboot },
+      { name: 'Node.js', icon: SiNodedotjs },
+      { name: 'Express', icon: SiExpress },
+      { name: 'React', icon: SiReact },
+      { name: 'React Native', icon: FiSmartphone },
+    ],
   },
   {
     title: 'DevOps & cloud',
-    items: ['AWS', 'Docker', 'Docker Compose', 'Terraform', 'Linux', 'Git', 'GitHub'],
+    items: [
+      { name: 'AWS', icon: FaAws },
+      { name: 'Docker', icon: SiDocker },
+      { name: 'Docker Compose', icon: SiDocker },
+      { name: 'Terraform', icon: SiTerraform },
+      { name: 'Linux', icon: SiLinux },
+      { name: 'Git', icon: SiGit },
+      { name: 'GitHub', icon: SiGithub },
+    ],
   },
   {
     title: 'Data & security',
-    items: ['PostgreSQL', 'MySQL', 'MongoDB', 'REST APIs', 'JWT', 'OAuth2'],
+    items: [
+      { name: 'PostgreSQL', icon: SiPostgresql },
+      { name: 'MySQL', icon: SiMysql },
+      { name: 'MongoDB', icon: SiMongodb },
+      { name: 'REST APIs', icon: FiServer },
+      { name: 'JWT', icon: FiShield },
+      { name: 'OAuth2', icon: FiKey },
+    ],
   },
 ];
 
@@ -442,7 +500,23 @@ export default function Home() {
           <div className="about-statement"><span className="about-quote">“</span><p>I enjoy working across the software lifecycle — from designing backend systems and building user interfaces to exploring cloud infrastructure and deployment workflows.</p><div className="signature-line"><span>CHAMIDU SANDEEPA</span><span>MATARA, SRI LANKA</span></div></div>
           <div className="about-copy"><p>I’m an undergraduate in Computing and Information Systems at Sabaragamuwa University of Sri Lanka. My interests sit at the intersection of DevOps engineering and full-stack development.</p><p>I like understanding how the pieces fit together: how an application is designed, how its services communicate, how data is managed, and how the whole system can be deployed reliably.</p><p>Every project is an opportunity to learn, experiment, and become a better engineer.</p><a className="text-link" href="https://github.com/HMGChamidu" target="_blank" rel="noreferrer">Explore my GitHub <ArrowUpRight /></a></div>
         </div>
-        <div className="skills-area" data-reveal><div className="skills-title"><p className="section-index">THE TOOLKIT</p><h3>Technologies I work with.</h3></div><div className="skills-groups">{skillGroups.map((group) => <div className="skill-group" key={group.title}><h4>{group.title}</h4><div className="tag-list">{group.items.map((skill) => <span className="tag" key={skill}>{skill}</span>)}</div></div>)}</div></div>
+        <div className="skills-area" data-reveal><div className="skills-title"><p className="section-index">THE TOOLKIT</p><h3>Technologies I work with.</h3></div><div className="skills-groups">{skillGroups.map((group) => <div className="skill-group" key={group.title}><h4>{group.title}</h4><div className="tag-list">
+          
+          {group.items.map((skill) => {
+  const SkillIcon = skill.icon;
+
+  return (
+    <span className="tag skill-tag" key={skill.name}>
+      <SkillIcon
+        className="skill-tag-icon"
+        aria-hidden="true"
+      />
+      <span>{skill.name}</span>
+    </span>
+  );
+})}
+          
+          </div></div>)}</div></div>
       </section>
 
       <section className="experience section-shell section-space" id="experience">

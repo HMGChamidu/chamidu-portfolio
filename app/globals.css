@@ -810,3 +810,29 @@ button:focus-visible {
   pointer-events: none;
   opacity: 0.78;
 }
+
+/* Technology Skill Icons */
+
+.skill-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease,
+    transform 0.25s ease;
+}
+
+.skill-tag-icon {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+  color: var(--accent);
+  opacity: 0.9;
+}
+
+.skill-tag:hover {
+  border-color: rgba(208, 240, 80, 0.5);
+  background: rgba(208, 240, 80, 0.05);
+  transform: translateY(-2px);
+}
