@@ -400,7 +400,7 @@ export default function Home() {
       <section className="hero section-shell" id="top">
         <div className="hero-main">
           <p className="hero-kicker"><span className="status-dot" /> COMPUTING & INFORMATION SYSTEMS UNDERGRADUATE</p>
-          <h1>Engineering<br /><span>with intention.</span></h1>
+          <h1>Engineering<br /><span className="hero-with">with</span><span> intention.</span></h1>
           <div className="hero-bottom">
             <p className="hero-description">I build web applications, backend systems, and cloud-based solutions — connecting thoughtful engineering with real-world needs.</p>
             <div className="hero-actions"><a href="#work" className="button button-primary">Explore my work <ArrowUpRight /></a><a href="#contact" className="button button-text">Get in touch <ArrowUpRight /></a></div>

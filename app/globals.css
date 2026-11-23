@@ -557,6 +557,10 @@ main > :not(.cursor-glow) { position: relative; z-index: 1; }
   color: var(--accent);
   text-shadow: 0 0 48px rgba(208, 240, 80, 0.13);
 }
+.hero h1 .hero-with {
+  color: #ffffff;
+  text-shadow: none;
+}
 .brand span { color: var(--accent); }
 .brand i { color: var(--accent); font-style: normal; }
 
