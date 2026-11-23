@@ -34,9 +34,15 @@ a { color: inherit; text-decoration: none; }
 
 button { font: inherit; }
 
-main {
+/* main {
    overflow: visible;
-   }
+   } */
+
+   main {
+  position: relative;
+  z-index: 1;
+  overflow: visible;
+}
 
  body{
         overflow-x: clip;
@@ -790,3 +796,13 @@ button:focus-visible {
   color: #080A06;
 }
 
+/* Background-only snowfall */
+.snowfall-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.78;
+}
