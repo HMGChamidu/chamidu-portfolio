@@ -298,6 +298,7 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [activeSection, setActiveSection] = useState<string | null>(null);
+  const [heroHoveredIndex, setHeroHoveredIndex] = useState<number | null>(null);
 
 
 
@@ -461,7 +462,34 @@ export default function Home() {
           <h1>Engineering<br /><span className="hero-with">with</span><span> intention.</span></h1>
           <div className="hero-bottom">
             <p className="hero-description">I build web applications, backend systems, and cloud-based solutions — connecting thoughtful engineering with real-world needs.</p>
-            <div className="hero-actions"><a href="#work" className="button button-primary">Explore my work <ArrowUpRight /></a><a href="#contact" className="button button-text">Get in touch <ArrowUpRight /></a></div>
+            <div
+              className="hero-actions"
+              onMouseLeave={() => setHeroHoveredIndex(null)}
+            >
+              <a
+                href="#work"
+                className={`button ${heroHoveredIndex === null || heroHoveredIndex === 0 ? 'button-primary' : 'button-text'}`}
+                onMouseEnter={() => setHeroHoveredIndex(0)}
+              >
+                Explore my work <ArrowUpRight />
+              </a>
+              <a
+                href="/Chamidu_SandeepaCV.pdf"
+                target="_blank"
+                rel="noreferrer"
+                className={`button ${heroHoveredIndex === 1 ? 'button-primary' : 'button-text'}`}
+                onMouseEnter={() => setHeroHoveredIndex(1)}
+              >
+                Download CV <ArrowUpRight />
+              </a>
+              <a
+                href="#contact"
+                className={`button ${heroHoveredIndex === 2 ? 'button-primary' : 'button-text'}`}
+                onMouseEnter={() => setHeroHoveredIndex(2)}
+              >
+                Get in touch <ArrowUpRight />
+              </a>
+            </div>
           </div>
         </div>
         <div className="hero-art" aria-label="Portrait surrounded by rotating technology rings">

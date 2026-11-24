@@ -155,7 +155,7 @@ a:hover .arrow { transform: translate(3px, -3px); }
 
 .button-primary:hover { background: #DDFB7A; }
 
-.button-text { padding-inline: 0; color: var(--text); }
+.button-text { padding-inline: 18px; color: var(--text); }
 
 .hero-art { width: min(100%, 485px); aspect-ratio: 1; justify-self: end; position: relative; margin-top: 0; }
 
